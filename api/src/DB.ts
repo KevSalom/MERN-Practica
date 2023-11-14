@@ -1,5 +1,12 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
-
-const DBconnect = mongoose.connect('mongodb+srv://kevsalom:Gaurdianes33@kevsalom.lfiygna.mongodb.net/?retryWrites=true&w=majority')
-
+export const DBconnection = async () => {
+  try {
+      await mongoose.connect(
+      "mongodb+srv://kevsalom:Guardianes33@kevsalom.lfiygna.mongodb.net/?retryWrites=true&w=majority"
+    );
+    console.log('Base de datos lista para usar')
+  } catch (error) {
+    console.log(error);
+  }
+};
