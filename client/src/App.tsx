@@ -6,12 +6,14 @@ import "./App.css";
 
 function App() {
   return (
-    <div>
+    <div> 
       <Navbar />
+      <div className="container p-4">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/video" element={<VideoSection />} />
       </Routes>
+      </div>
     </div>
   );
 }

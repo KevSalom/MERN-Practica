@@ -1,7 +1,12 @@
+import VideoForm from "../../Components/VideoForm/VideoForm"
+
 const VideoSection = () => {
   return (
-    <div>
-      Soy la seccion de video
+    <div className="row">
+
+      <VideoForm/>
+
+     
     </div>
   )
 }
