@@ -16,9 +16,9 @@ export const createVideo = async (data: Video) => {
 };
 
 export const editVideo = async (id: string, data: Video) => {
-  return await axios.get(`${URL}/editvideo/${id}`, { data });
+  return await axios.put(`${URL}/editvideo/${id}`, { data });
 };
 
 export const deleteVideo = async (id: string) => {
-  return await axios.get(`${URL}/deletevideo/${id}`);
+  return await axios.delete(`${URL}/deletevideo/${id}`);
 };

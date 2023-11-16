@@ -22,6 +22,7 @@ const VideoFormEdit = () => {
 
   const handleGetVideo = async (id: string) => {
     const res = await getVideo(id);
+    console.log(res.data)
     const { title, description, url } = res.data;
     setVideo({ title, description, url });
   };
@@ -37,12 +38,15 @@ const VideoFormEdit = () => {
 
       if(id){
         try {
+          console.log(video)
+          console.log(id)
         await editVideo(id,video)
         setVideo(initialState)
         navigate('/')
-        toast.update(loading,{ render: "Video Created", type: "success", isLoading: false,
+        toast.update(loading,{ render: "Video Updated", type: "success", isLoading: false,
         autoClose: 3000});
       } catch (error:any) {
+        toast.update(loading,{ render: "There's problems!", type: "error", isLoading: false,  autoClose: 3000})
         console.error(error.response.data)
       }
     }
@@ -56,13 +60,13 @@ const VideoFormEdit = () => {
           <h4>New Visdfsdfsdeo</h4>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-            <input type="text" name="title" placeholder="Write video title"  className="form-control" required onChange={handleOnchage}/>
+            <input type="text" name="title" placeholder="Write video title"  className="form-control" required onChange={handleOnchage} value={video.title}/>
             </div>
             <div className="mb-3">
-            <input type="text" name="url" placeholder="https://youtube.com/fkROgb26"  className="form-control" required onChange={handleOnchage}/>
+            <input type="text" name="url" placeholder="https://youtube.com/fkROgb26"  className="form-control" required onChange={handleOnchage} value={video.url}/>
             </div>
             <div className="mb-3">
-            <textarea name="description" rows={3} placeholder="White a description" className="form-control" onChange={handleOnchage}></textarea>
+            <textarea name="description" rows={3} placeholder="White a description" className="form-control" onChange={handleOnchage} value={video.description}></textarea>
             </div>
             <button className="btn btn-primary">Create Video</button>
           </form>

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { getVideos, deleteVideo } from "../../utils/VideoServices";
 import { Video } from "../../Interfaces/Video";
 import VideoCard from "../../Components/VideoCard/VideoCard";
+import { toast } from 'react-toastify';
+
 
 
 const Home = () => {
@@ -14,12 +16,21 @@ const Home = () => {
     setVideos(data);
   };
 
-  const handleDelete = async(_id:string)=>{
-    await deleteVideo(_id)
+  const handleDelete = async(id:string)=>{
+    const loading = toast.loading("Working on it...")
+    try {
+      await deleteVideo(id)
+      toast.update(loading,{ render: "Video deleted", type: "success", isLoading: false,
+      autoClose: 3000});
+      await loadVideos()
+    } catch (error:any) {
+      console.error(error.response.data)
+    }
+   
   }
 
   const handleCardClick = (id:string)=>{
-    navigate(`/editvideo/${id}`)
+    navigate(`/edit/${id}`)
   }  
 
   useEffect(() => {
