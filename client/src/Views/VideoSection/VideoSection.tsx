@@ -1,14 +1,11 @@
-import VideoForm from "../../Components/VideoForm/VideoForm"
+import VideoFormCreate from "../../Components/VideoForm/VideoFormCreate";
 
 const VideoSection = () => {
   return (
     <div className="row">
-
-      <VideoForm/>
-
-     
+      <VideoFormCreate />
     </div>
-  )
-}
+  );
+};
 
-export default VideoSection
+export default VideoSection;
